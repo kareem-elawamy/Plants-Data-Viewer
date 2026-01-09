@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيانات أمراض النبات (Model Data)</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f0f7f4;
+            /* خلفية فاتحة مريحة */
+        }
+
+        .main-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .table-custom thead {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .table-custom th {
+            border: none;
+            padding: 15px;
+            font-weight: 700;
+        }
+
+        .table-custom td {
+            vertical-align: middle;
+            padding: 12px;
+        }
+
+        .disease-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .disease-img:hover {
+            transform: scale(1.5);
+            /* تكبير الصورة عند الوقوف عليها */
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .badge-treatment {
+            background-color: #e8f5e9;
+            color: #1b5e20;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto 20px auto;
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+
+        .form-control-search {
+            padding-left: 40px;
+            border-radius: 30px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .form-control-search:focus {
+            box-shadow: none;
+            border-color: #2ecc71;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="alert alert-warning text-center m-0 rounded-0" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <strong>نسخة للمراجعة الداخلية (Internal Review):</strong>
+        هذه البيانات لغرض التدقيق مع الفريق وليست النسخة من اي مشروع.
+    </div>
+    <div class="container mt-5 mb-5">
+
+        <div class="main-card">
+            <div class="header-section">
+                <h1 class="mb-2"><i class="bi bi-flower1"></i> قاعدة بيانات أمراض النبات</h1>
+                <p class="opacity-75">يحتوي هذا النموذج على 38 فئة لتصنيف الأمراض وعلاجها</p>
+
+                <div class="search-container mt-4">
+                    <i class="bi bi-search"></i>
+                    <input type="text" id="searchInput" class="form-control form-control-search"
+                        placeholder="ابحث عن اسم المرض أو المحصول...">
+                </div>
+            </div>
+
+            <div class="p-4">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered align-middle text-center table-custom"
+                        id="diseaseTable">
+                        <thead>
+                            <tr>
+                                <th width="25%">اسم المرض (Class)</th>
+                                <th width="30%">الوصف</th>
+                                <th width="30%">العلاج المقترح</th>
+                                <th width="15%">صورة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td class="fw-bold text-success">Apple_Apple_scab</td>
+                                <td>مرض فطري يسبب بقع داكنة على أوراق وثمار التفاح.</td>
+                                <td><span class="badge-treatment">مبيدات فطرية + إزالة الأجزاء المصابة</span></td>
+                                <td><img src="./img/Apple_Apple_scab/0a14783a-838a-4d4f-a671-ff98011714c6___FREC_Scab 3288.JPG"
+                                        class="disease-img" alt="Apple Scab"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-success">Apple_Black_rot</td>
+                                <td>تعفن فطري يؤدي لاسوداد الثمار.</td>
+                                <td><span class="badge-treatment">تحسين التهوية واستخدام مبيد فطري</span></td>
+                                <td><img src="./img/Apple_Black_rot/00e909aa-e3ae-4558-9961-336bb0f35db3___JR_FrgE.S 8593.JPG"
+                                        class="disease-img" alt="Black Rot"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-success">Apple_Cedar_apple_rust</td>
+                                <td>مرض فطري يسبب بقع صفراء وبرتقالية.</td>
+                                <td><span class="badge-treatment">رش مبيدات فطرية وقائية</span></td>
+                                <td><img src="./img/Apple_Cedar_apple_rust/0a41c25a-f9a6-4c34-8e5c-7f89a6ac4c40___FREC_C.Rust 9807.JPG"
+                                        class="disease-img" alt="Cedar Apple Rust"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-primary">Apple_healthy</td>
+                                <td>نبات سليم بدون أعراض مرضية.</td>
+                                <td><span class="badge bg-success">لا يحتاج علاج</span></td>
+                                <td><img src="./img/Apple_healthy/00a6039c-e425-4f7d-81b1-d6b0e668517e___RS_HL 7669.JPG"
+                                        class="disease-img" alt="Healthy Apple"></td>
+                            </tr>
+
+                            <tr>
+                                <td class="fw-bold text-primary">Blueberry_healthy</td>
+                                <td>نبات توت سليم.</td>
+                                <td><span class="badge bg-success">لا يحتاج علاج</span></td>
+                                <td><img src="./img/Blueberry_healthy/00fee259-67b7-4dd7-8b36-12503bbdba14___RS_HL 2681.JPG"
+                                        class="disease-img" alt="Healthy Blueberry"></td>
+                            </tr>
+
+                            <tr>
+                                <td class="fw-bold text-success">Cherry_(including_sour)_Powdery_mildew</td>
+                                <td>بياض دقيقي يظهر كطبقة بيضاء.</td>
+                                <td><span class="badge-treatment">مبيدات فطرية وتحسين التهوية</span></td>
+                                <td><img src="./img/Cherry_(including_sour)___Powdery_mildew/00b7df55-c789-43d6-a02e-a579ac9d07e6___FREC_Pwd.M 4748.JPG"
+                                        class="disease-img" alt="Cherry Powdery Mildew"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-primary">Cherry_(including_sour)_healthy</td>
+                                <td>نبات كرز سليم.</td>
+                                <td><span class="badge bg-success">لا يحتاج علاج</span></td>
+                                <td><img src="./img/Cherry_(including_sour)___healthy/00a8e886-d172-4261-85e2-780b3c50ad4d___JR_HL 4156.JPG"
+                                        class="disease-img" alt="Healthy Cherry"></td>
+                            </tr>
+
+                            <tr>
+                                <td class="fw-bold text-success">Corn_(maize)_Cercospora_leaf_spot</td>
+                                <td>بقع رمادية على أوراق الذرة.</td>
+                                <td><span class="badge-treatment">مبيدات فطرية ودورة زراعية</span></td>
+                                <td><img src="./img/Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot/00a20f6f-e8bd-4453-9e25-36ea70feb626___RS_GLSp 4655.JPG"
+                                        class="disease-img" alt="Corn Leaf Spot"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-success">Corn_(maize)_Common_rust</td>
+                                <td>صدأ يظهر كبقع بنية.</td>
+                                <td><span class="badge-treatment">مقاومة الأصناف + رش فطري</span></td>
+                                <td><img src="./img/Corn_(maize)___Common_rust_/RS_Rust 1563.JPG" class="disease-img"
+                                        alt="Corn Rust"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-success">Corn_(maize)_Northern_Leaf_Blight</td>
+                                <td>بقع طويلة رمادية على الأوراق.</td>
+                                <td><span class="badge-treatment">مبيد فطري مناسب</span></td>
+                                <td><img src="./img/Corn_(maize)___Northern_Leaf_Blight/00a14441-7a62-4034-bc40-b196aeab2785___RS_NLB 3932.JPG"
+                                        class="disease-img" alt="Corn Blight"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-primary">Corn_(maize)_healthy</td>
+                                <td>ذرة سليمة.</td>
+                                <td><span class="badge bg-success">لا يحتاج علاج</span></td>
+                                <td><img src="./img/Corn_(maize)___healthy/0a1a49a8-3a95-415a-b115-4d6d136b980b___R.S_HL 8216 copy.jpg"
+                                        class="disease-img" alt="Healthy Corn"></td>
+                            </tr>
+
+                            <tr>
+                                <td class="fw-bold text-success">Grape_Black_rot</td>
+                                <td>تعفن أسود يصيب العنب.</td>
+                                <td><span class="badge-treatment">مبيدات فطرية وإزالة الثمار المصابة</span></td>
+                                <td><img src="./img/Grape___Black_rot/00cab05d-e87b-4cf6-87d8-284f3ec99626___FAM_B.Rot 3244.JPG"
+                                        class="disease-img" alt="Grape Black Rot"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-success">Grape_Esca_(Black_Measles)</td>
+                                <td>مرض فطري مزمن يؤثر على الساق.</td>
+                                <td><span class="badge-treatment">تقليم الأجزاء المصابة</span></td>
+                                <td><img src="./img/Grape___Esca_(Black_Measles)/00b65fe8-cee1-4b68-8ef4-1211814f2845___FAM_B.Msls 3990.JPG"
+                                        class="disease-img" alt="Grape Esca"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-success">Grape_Leaf_blight</td>
+                                <td>بقع بنية على الأوراق.</td>
+                                <td><span class="badge-treatment">رش مبيد فطري</span></td>
+                                <td><img src="./img/Grape___Leaf_blight_(Isariopsis_Leaf_Spot)/00a962ad-573b-44b1-97ae-912a6bd6e0b0___FAM_L.Blight 1431.JPG"
+                                        class="disease-img" alt="Grape Leaf Blight"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-primary">Grape_healthy</td>
+                                <td>نبات عنب سليم.</td>
+                                <td><span class="badge bg-success">لا يحتاج علاج</span></td>
+                                <td><img src="./img/Grape___healthy/00e00912-bf75-4cf8-8b7d-ad64b73bea5f___Mt.N.V_HL 6067.JPG"
+                                        class="disease-img" alt="Healthy Grape"></td>
+                            </tr>
+
+                            <tr>
+                                <td class="fw-bold text-danger">Orange_Haunglongbing</td>
+                                <td>مرض بكتيري خطير يصيب الموالح.</td>
+                                <td><span class="badge-treatment">مكافحة الحشرات الناقلة</span></td>
+                                <td><img src="./img/Orange___Haunglongbing_(Citrus_greening)/00a79a7b-8b96-452c-91c8-deb54eaa28e5___CREC_HLB 7231.JPG"
+                                        class="disease-img" alt="Orange HLB"></td>
+                            </tr>
+
+                            <tr>
+                                <td class="fw-bold text-success">Peach_Bacterial_spot</td>
+                                <td>بقع بكتيرية على الأوراق.</td>
+                                <td><span class="badge-treatment">رش مبيدات نحاسية</span></td>
+                                <td><img src="./img/Peach___Bacterial_spot/00ddc106-692e-4c67-b2e8-569c924caf49___Rutg._Bact.S 1228.JPG"
+                                        class="disease-img" alt="Peach Bacterial Spot"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-primary">Peach_healthy</td>
+                                <td>خوخ سليم.</td>
+                                <td><span class="badge bg-success">لا يحتاج علاج</span></td>
+                                <td><img src="./img/Peach___healthy/0a2ed402-5d23-4e8d-bc98-b264aea9c3fb___Rutg._HL 2471.JPG"
+                                        class="disease-img" alt="Healthy Peach"></td>
+                            </tr>
+
+                            <tr>
+                                <td class="fw-bold text-success">Pepper_bell_Bacterial_spot</td>
+                                <td>بقع بكتيرية على الفلفل.</td>
+                                <td><span class="badge-treatment">مبيدات نحاسية</span></td>
+                                <td><img src="./img/Pepper,_bell___Bacterial_spot/00f2e69a-1e56-412d-8a79-fdce794a17e4___JR_B.Spot 3132.JPG"
+                                        class="disease-img" alt="Pepper Bacterial Spot"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-primary">Pepper_bell_healthy</td>
+                                <td>فلفل سليم.</td>
+                                <td><span class="badge bg-success">لا يحتاج علاج</span></td>
+                                <td><img src="./img/Pepper,_bell___healthy/0a3f2927-4410-46a3-bfda-5f4769a5aaf8___JR_HL 8275.JPG"
+                                        class="disease-img" alt="Healthy Pepper"></td>
+                            </tr>
+
+                            <tr>
+                                <td class="fw-bold text-success">Potato_Early_blight</td>
+                                <td>لفحة مبكرة تسبب بقع داكنة.</td>
+                                <td><span class="badge-treatment">مبيدات فطرية</span></td>
+                                <td><img src="./img/Potato___Early_blight/00d8f10f-5038-4e0f-bb58-0b885ddc0cc5___RS_Early.B 8722.JPG"
+                                        class="disease-img" alt="Potato Early Blight"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-danger">Potato_Late_blight</td>
+                                <td>لفحة متأخرة خطيرة.</td>
+                                <td><span class="badge-treatment">مبيدات فطرية وقائية</span></td>
+                                <td><img src="./img/Potato___Late_blight/00b1f292-23dd-44d4-aad3-c1ffb6a6ad5a___RS_LB 4479.JPG"
+                                        class="disease-img" alt="Potato Late Blight"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-primary">Potato_healthy</td>
+                                <td>بطاطس سليمة.</td>
+                                <td><span class="badge bg-success">لا يحتاج علاج</span></td>
+                                <td><img src="./img/Potato___healthy/00fc2ee5-729f-4757-8aeb-65c3355874f2___RS_HL 1864.JPG"
+                                        class="disease-img" alt="Healthy Potato"></td>
+                            </tr>
+
+                            <tr>
+                                <td class="fw-bold text-primary">Raspberry_healthy</td>
+                                <td>توت سليم.</td>
+                                <td><span class="badge bg-success">لا يحتاج علاج</span></td>
+                                <td><img src="./img/Raspberry___healthy/00a3fc0e-64cc-4e35-ac2f-aef04fda9b22___Mary_HL 9177.JPG"
+                                        class="disease-img" alt="Healthy Raspberry"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-primary">Soybean_healthy</td>
+                                <td>فول صويا سليم.</td>
+                                <td><span class="badge bg-success">لا يحتاج علاج</span></td>
+                                <td><img src="./img/Soybean___healthy/00b2688d-5c31-4bbb-8cb5-239839af41bd___RS_HL 3314.JPG"
+                                        class="disease-img" alt="Healthy Soybean"></td>
+                            </tr>
+
+                            <tr>
+                                <td class="fw-bold text-success">Strawberry_Leaf_scorch</td>
+                                <td>احتراق أطراف الأوراق.</td>
+                                <td><span class="badge-treatment">تحسين الري ومبيد فطري</span></td>
+                                <td><img src="./img/Strawberry___Leaf_scorch/0a04940f-3650-4e45-a33c-4e4652bf9ee1___RS_L.Scorch 1236.JPG"
+                                        class="disease-img" alt="Strawberry Scorch"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-primary">Strawberry_healthy</td>
+                                <td>فراولة سليمة.</td>
+                                <td><span class="badge bg-success">لا يحتاج علاج</span></td>
+                                <td><img src="./img/Strawberry___healthy/00e9a277-ca5e-4350-95ce-8b2918b69fb9___RS_HL 4667.JPG"
+                                        class="disease-img" alt="Healthy Strawberry"></td>
+                            </tr>
+
+                            <tr>
+                                <td class="fw-bold text-success">Tomato_Bacterial_spot</td>
+                                <td>بقع بكتيرية على الطماطم.</td>
+                                <td><span class="badge-treatment">مبيدات نحاسية</span></td>
+                                <td><img src="./img/Tomato___Bacterial_spot/00a7c269-3476-4d25-b744-44d6353cd921___GCREC_Bact.Sp 5807.JPG"
+                                        class="disease-img" alt="Tomato Bacterial Spot"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-success">Tomato_Early_blight</td>
+                                <td>لفحة مبكرة.</td>
+                                <td><span class="badge-treatment">مبيد فطري</span></td>
+                                <td><img src="./img/Tomato___Early_blight/00c5c908-fc25-4710-a109-db143da23112___RS_Erly.B 7778.JPG"
+                                        class="disease-img" alt="Tomato Early Blight"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-danger">Tomato_Late_blight</td>
+                                <td>لفحة متأخرة.</td>
+                                <td><span class="badge-treatment">رش فطري سريع</span></td>
+                                <td><img src="./img/Tomato___Late_blight/00ce4c63-9913-4b16-898c-29f99acf0dc3___RS_Late.B 4982.JPG"
+                                        class="disease-img" alt="Tomato Late Blight"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-success">Tomato_Leaf_Mold</td>
+                                <td>عفن الأوراق.</td>
+                                <td><span class="badge-treatment">تهوية جيدة ومبيد</span></td>
+                                <td><img src="./img/Tomato___Leaf_Mold/0a555f63-bf03-4958-8993-e1932b8dce9f___Crnl_L.Mold 9064.JPG"
+                                        class="disease-img" alt="Tomato Leaf Mold"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-success">Tomato_Septoria_leaf_spot</td>
+                                <td>بقع دائرية صغيرة.</td>
+                                <td><span class="badge-treatment">مبيد فطري</span></td>
+                                <td><img src="./img/Tomato___Septoria_leaf_spot/00f16858-f392-4d9e-ad9f-efab8049a13f___JR_Sept.L.S 8368.JPG"
+                                        class="disease-img" alt="Tomato Septoria"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-warning">Tomato_Spider_mites</td>
+                                <td>إصابة حشرية تسبب اصفرار.</td>
+                                <td><span class="badge-treatment">مبيد حشري</span></td>
+                                <td><img src="./img/Tomato___Spider_mites Two-spotted_spider_mite/00bc7858-1dca-4bfb-a828-225f03bd72a5___Com.G_SpM_FL 9455.JPG"
+                                        class="disease-img" alt="Tomato Spider Mites"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-success">Tomato_Target_Spot</td>
+                                <td>بقع بنية دائرية.</td>
+                                <td><span class="badge-treatment">مبيدات فطرية</span></td>
+                                <td><img src="./img/Tomato___Target_Spot/0a2de4c5-d688-4f9d-9107-ace1d281c307___Com.G_TgS_FL 7941.JPG"
+                                        class="disease-img" alt="Tomato Target Spot"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-danger">Tomato_Mosaic_virus</td>
+                                <td>فيروس يسبب تشوه الأوراق.</td>
+                                <td><span class="badge bg-danger">إزالة النباتات المصابة</span></td>
+                                <td><img src="./img/Tomato___Tomato_mosaic_virus/000ec6ea-9063-4c33-8abe-d58ca8a88878___PSU_CG 2169.JPG"
+                                        class="disease-img" alt="Tomato Mosaic Virus"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-danger">Tomato_Yellow_Leaf_Curl</td>
+                                <td>فيروس يسبب التفاف الأوراق.</td>
+                                <td><span class="badge-treatment">مكافحة الذبابة البيضاء</span></td>
+                                <td><img src="./img/Tomato___Tomato_Yellow_Leaf_Curl_Virus/00a538f3-8421-43ab-9e6f-758d36180dd3___YLCV_NREC 2667.JPG"
+                                        class="disease-img" alt="Tomato YLC Virus"></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-primary">Tomato_healthy</td>
+                                <td>طماطم سليمة.</td>
+                                <td><span class="badge bg-success">لا يحتاج علاج</span></td>
+                                <td><img src="./img/Tomato___healthy/000bf685-b305-408b-91f4-37030f8e62db___GH_HL Leaf 308.1.JPG"
+                                        class="disease-img" alt="Healthy Tomato"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-3 text-muted">
+            <small>تم إنشاء الجدول بواسطة Gemini AI</small>
+        </div>
+    </div>
+
+    <script>
+        // كود بسيط لعمل بحث داخل الجدول
+        document.getElementById('searchInput').addEventListener('keyup', function () {
+            let filter = this.value.toLowerCase();
+            let rows = document.querySelectorAll('#diseaseTable tbody tr');
+
+            rows.forEach(row => {
+                let text = row.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

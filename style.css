@@ -1,0 +1,67 @@
+body {
+    background: #0f172a;
+    color: #e5e7eb;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+h1 {
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+p {
+    color: #cbd5f5;
+}
+
+.table {
+    background: #020617;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: linear-gradient(90deg, #2563eb, #38bdf8);
+    color: #fff;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+    border-color: #1e293b;
+}
+
+.table tbody tr {
+    transition: background 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background: #020617;
+}
+
+.badge-healthy {
+    background: #16a34a;
+}
+
+.badge-disease {
+    background: #dc2626;
+}
+
+.img-box {
+    width: 120px;
+    height: 80px;
+    background: #020617;
+    border: 1px dashed #475569;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
